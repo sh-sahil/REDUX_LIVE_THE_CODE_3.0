@@ -1,31 +1,47 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+
+import Login from "./components/login";
+import SignUp from "./components/register";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Profile from "./components/profile";
+import { useState } from "react";
+import { auth } from "./components/firebase";
 
 function App() {
-  const [queryText, setQueryText] = useState("");
-  const [response, setResponse] = useState("");
-
-  const handleQuery = async () => {
-    try {
-      const res = await axios.post("http://localhost:5000/query", {
-        query_text: queryText,
-      });
-      setResponse(res.data.response);
-    } catch (error) {
-      console.error("Error querying the API", error);
-    }
-  };
-
+  const [user, setUser] = useState();
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+  });
   return (
-    <div className="App">
-      <h1>Query the AI</h1>
-      <input type="text" value={queryText} onChange={e => setQueryText(e.target.value)} />
-      <button onClick={handleQuery}>Submit</button>
-      <div>
-        <h2>Response:</h2>
-        <pre>{response}</pre>
+    <Router>
+      <div className="App">
+        <div className="auth-wrapper">
+          <div className="auth-inner">
+            <Routes>
+              <Route
+                path="/"
+                element={user ? <Navigate to="/profile" /> : <Login />}
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<SignUp />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+            <ToastContainer />
+          </div>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
