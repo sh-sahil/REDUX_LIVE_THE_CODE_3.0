@@ -37,6 +37,8 @@ function Register() {
   };
 
   return (
+    <>
+    <h1 className="h1">Money Mosaic</h1>
     <form onSubmit={handleRegister}>
       <h3>Sign Up</h3>
 
@@ -92,6 +94,7 @@ function Register() {
         Already registered <a href="/login">Login</a>
       </p>
     </form>
+    </>
   );
 }
 export default Register;

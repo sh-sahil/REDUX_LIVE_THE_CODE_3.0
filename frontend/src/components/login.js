@@ -28,7 +28,10 @@ function Login() {
   };
 
   return (
+<>
+<h1 className="h1">Money Mosaic</h1>
     <form onSubmit={handleSubmit}>
+      
       <h3>Login</h3>
 
       <div className="mb-3">
@@ -63,6 +66,7 @@ function Login() {
       </p>
       <SignInwithGoogle/>
     </form>
+    </>
   );
 }
 

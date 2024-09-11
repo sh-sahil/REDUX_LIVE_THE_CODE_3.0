@@ -34,28 +34,33 @@ function Profile() {
   };
 
   return (
-    <div className="App">
-      <div className="sidebar">
+    <div className="profile">
+      <div className="header">
         <h1>Money Mosaic</h1>
-        <div className="prompts">
-          {previousPrompts.map((prompt, index) => (
-            <p key={index}>{prompt}</p>
-          ))}
-        </div>
-        <button onClick={handleLogout}>Logout</button>
       </div>
-      <div className="main-content">
-        <h1>Query the AI</h1>
-        <input
-          type="text"
-          value={queryText}
-          onChange={(e) => setQueryText(e.target.value)}
-          placeholder="Enter your query here..."
-        />
-        <button onClick={handleQuery}>Submit</button>
-        <div className="response-section">
-          <h2>Response:</h2>
-          <pre>{response}</pre>
+      <div className="main-container">
+        <div className="sidebar">
+          <h2>Previous Prompts</h2>
+          <div className="prompts">
+            {previousPrompts.map((prompt, index) => (
+              <p key={index}>{prompt}</p>
+            ))}
+          </div>
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
+        </div>
+        <div className="main-content">
+          <h1>Query the AI</h1>
+          <input
+            type="text"
+            value={queryText}
+            onChange={(e) => setQueryText(e.target.value)}
+            placeholder="Enter your query here..."
+          />
+          <button onClick={handleQuery} className="submit-button">Submit</button>
+          <div className="response-section">
+            <h2>Response:</h2>
+            <pre>{response}</pre>
+          </div>
         </div>
       </div>
     </div>
