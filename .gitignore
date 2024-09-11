@@ -1,4 +1,6 @@
 *.pyc
 .DS_Store
 backup
-chroma
+backend/chroma
+
+frontend/src/components/firebase.js
