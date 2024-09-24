@@ -4,5 +4,6 @@
 <h4>A plaatform where you can get finacial guidance</h4>
 
 <h3>Demo Video</h3>
+<video href="https://github.com/user-attachments/assets/ff0fdc53-f114-4f8f-a99a-6f4d5f573a33"> </video>
 https://github.com/user-attachments/assets/ff0fdc53-f114-4f8f-a99a-6f4d5f573a33
 
